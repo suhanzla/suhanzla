@@ -37,7 +37,7 @@ export default function LandingPage() {
 
     // 히어로 섹션의 요소들은 페이지 로드 시 바로 보이게 설정
     const heroElements = document.querySelectorAll(
-      ".animate-slide-up, .animate-scale-in, .animate-fade-left, .animate-fade-right, .text-reveal, .image-zoom, .button-pulse, .char-reveal",
+      ".animate-slide-up, .animate-scale-in, .animate-fade-left, .animate-fade-right, .text-reveal, .image-zoom, .button-pulse, .char-reveal, .waitlist-text-animation",
     )
 
     // 지연 시간을 두고 애니메이션 적용
@@ -168,7 +168,25 @@ export default function LandingPage() {
                 className="waitlist-btn-white bg-white text-[#2a7d8c] hover:bg-gray-100 px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-full button-pulse delay-600 touch-target w-full sm:w-auto"
                 onClick={() => setShowWaitlistForm(true)}
               >
-                Join the waitlist
+                <div className="waitlist-text-animation">
+                  <span>J</span>
+                  <span>o</span>
+                  <span>i</span>
+                  <span>n</span>
+                  <span> </span>
+                  <span>t</span>
+                  <span>h</span>
+                  <span>e</span>
+                  <span> </span>
+                  <span>w</span>
+                  <span>a</span>
+                  <span>i</span>
+                  <span>t</span>
+                  <span>l</span>
+                  <span>i</span>
+                  <span>s</span>
+                  <span>t</span>
+                </div>
               </Button>
             </div>
             {/* 히어로 섹션 이미지 변경 */}
@@ -357,7 +375,20 @@ export default function LandingPage() {
                 className="waitlist-btn bg-[#2a7d8c] hover:bg-[#236778] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg animate-fade-in delay-600 touch-target w-full sm:w-auto mt-4"
                 onClick={() => setShowWaitlistForm(true)}
               >
-                웨이팅 리스트 등록하기
+                <div className="waitlist-text-animation">
+                  <span>웨</span>
+                  <span>이</span>
+                  <span>팅</span>
+                  <span> </span>
+                  <span>리</span>
+                  <span>스</span>
+                  <span>트</span>
+                  <span> </span>
+                  <span>등</span>
+                  <span>록</span>
+                  <span>하</span>
+                  <span>기</span>
+                </div>
               </Button>
             </div>
           </div>
@@ -484,7 +515,20 @@ export default function LandingPage() {
               className="waitlist-btn bg-[#2a7d8c] hover:bg-[#236778] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-full animate-fade-in delay-400 touch-target w-full sm:w-auto"
               onClick={() => setShowWaitlistForm(true)}
             >
-              <span>웨이팅 리스트 등록하기</span>
+              <span className="waitlist-text-animation">
+                <span>웨</span>
+                <span>이</span>
+                <span>팅</span>
+                <span> </span>
+                <span>리</span>
+                <span>스</span>
+                <span>트</span>
+                <span> </span>
+                <span>등</span>
+                <span>록</span>
+                <span>하</span>
+                <span>기</span>
+              </span>
               <ArrowRight className="ml-2 h-5 w-5 arrow-icon" />
             </Button>
           </div>
@@ -590,7 +634,20 @@ export default function LandingPage() {
             className="waitlist-btn-white bg-white text-[#2a7d8c] hover:bg-gray-100 px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-full animate-fade-in delay-400 touch-target w-full sm:w-auto"
             onClick={() => setShowWaitlistForm(true)}
           >
-            <span>웨이팅 리스트 등록하기</span>
+            <span className="waitlist-text-animation">
+              <span>웨</span>
+              <span>이</span>
+              <span>팅</span>
+              <span> </span>
+              <span>리</span>
+              <span>스</span>
+              <span>트</span>
+              <span> </span>
+              <span>등</span>
+              <span>록</span>
+              <span>하</span>
+              <span>기</span>
+            </span>
             <ArrowRight className="ml-2 h-5 w-5 arrow-icon" />
           </Button>
         </div>
@@ -760,7 +817,20 @@ export default function LandingPage() {
                   setShowWaitlistForm(true)
                 }}
               >
-                <span>웨이팅 리스트 등록하기</span>
+                <span className="waitlist-text-animation">
+                  <span>웨</span>
+                  <span>이</span>
+                  <span>팅</span>
+                  <span> </span>
+                  <span>리</span>
+                  <span>스</span>
+                  <span>트</span>
+                  <span> </span>
+                  <span>등</span>
+                  <span>록</span>
+                  <span>하</span>
+                  <span>기</span>
+                </span>
                 <ArrowRight className="ml-2 h-5 w-5 arrow-icon" />
               </Button>
             </div>
