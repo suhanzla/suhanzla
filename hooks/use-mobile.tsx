@@ -1,19 +1,27 @@
-import * as React from "react"
+"use client"
 
-const MOBILE_BREAKPOINT = 768
+import { useState, useEffect } from "react"
 
-export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
+export default function useMobile() {
+  const [isMobile, setIsMobile] = useState(false)
 
-  React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
-    const onChange = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+  useEffect(() => {
+    // 초기 화면 크기 확인
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
     }
-    mql.addEventListener("change", onChange)
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    return () => mql.removeEventListener("change", onChange)
+
+    // 컴포넌트 마운트 시 한 번 실행
+    checkMobile()
+
+    // 화면 크기 변경 시 확인
+    window.addEventListener("resize", checkMobile)
+
+    // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+    }
   }, [])
 
-  return !!isMobile
+  return isMobile
 }

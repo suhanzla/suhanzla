@@ -10,10 +10,301 @@
   --foreground: #333333;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--foreground);
   background-color: var(--background);
+  -webkit-tap-highlight-color: transparent; /* 모바일에서 탭 시 하이라이트 제거 */
+}
+
+/* 모바일에서 터치 영역 확대를 위한 클래스 */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* 모바일 스크롤 개선 */
+@media (max-width: 767px) {
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .mobile-scroll > * {
+    scroll-snap-align: start;
+  }
+}
+
+/* 모바일에서 폰트 크기 최적화 */
+@media (max-width: 767px) {
+  .mobile-text-adjust {
+    font-size: 16px; /* 모바일에서 읽기 쉬운 최소 폰트 크기 */
+    line-height: 1.5;
+  }
+}
+
+/* 개선된 애니메이션 클래스 */
+.animate-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 새로운 애니메이션 클래스 추가 */
+.animate-slide-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.animate-fade-right {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-fade-left {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 새로운 초기 로드 애니메이션 */
+.text-reveal {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.2s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.2s ease;
+}
+
+.text-reveal.visible {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+.char-reveal {
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.char-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.image-zoom {
+  transform: scale(1.05);
+  opacity: 0;
+  transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 1s ease;
+}
+
+.image-zoom.visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.button-pulse {
+  animation: none;
+}
+
+.button-pulse.visible {
+  animation: button-pulse 2s ease-in-out infinite;
+}
+
+@keyframes button-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(42, 125, 140, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(42, 125, 140, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(42, 125, 140, 0);
+  }
+}
+
+/* 웨이팅 리스트 버튼 호버 애니메이션 */
+.waitlist-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(42, 125, 140, 0.1);
+}
+
+.waitlist-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(42, 125, 140, 0.2);
+}
+
+.waitlist-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.waitlist-btn:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+.waitlist-btn .arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.waitlist-btn:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+.waitlist-btn-white {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.waitlist-btn-white:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(255, 255, 255, 0.2);
+}
+
+.waitlist-btn-white::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(42, 125, 140, 0.3);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.waitlist-btn-white:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+/* 지연 시간 클래스 개선 */
+.delay-200 {
+  transition-delay: 0.2s;
+}
+
+.delay-400 {
+  transition-delay: 0.4s;
+}
+
+.delay-600 {
+  transition-delay: 0.6s;
+}
+
+.delay-800 {
+  transition-delay: 0.8s;
+}
+
+.delay-1000 {
+  transition-delay: 1s;
+}
+
+/* 애니메이션 시퀀스 클래스 */
+.stagger-item:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.stagger-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.stagger-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.stagger-item:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.stagger-item:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+/* 모바일 메뉴 애니메이션 */
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.mobile-menu-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-menu-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 300ms, transform 300ms;
 }
 
 @layer utilities {
@@ -29,8 +320,4 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-}
-
-html {
-  scroll-behavior: smooth;
 }

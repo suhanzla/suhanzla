@@ -89,14 +89,16 @@ export default function WaitlistForm({ onClose }) {
           </>
         ) : (
           <div className="p-8 text-center">
-            <div className="w-16 h-16 bg-[#2a7d8c] rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-[#2a7d8c] rounded-full flex items-center justify-center mx-auto mb-6 animate-scale-in">
               <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-[#2a7d8c] mb-2">웨이팅 리스트 등록 완료!</h2>
-            <p className="text-gray-600 mb-6">출시되면 가장 먼저 알려드릴게요.</p>
-            <Button onClick={onClose} className="bg-[#2a7d8c] hover:bg-[#236778]">
+            <h2 className="text-2xl font-bold text-[#2a7d8c] mb-2 animate-fade-in delay-200">
+              웨이팅 리스트 등록 완료!
+            </h2>
+            <p className="text-gray-600 mb-6 animate-fade-in delay-400">출시되면 가장 먼저 알려드릴게요.</p>
+            <Button onClick={onClose} className="bg-[#2a7d8c] hover:bg-[#236778] animate-fade-in delay-600">
               확인
             </Button>
           </div>
