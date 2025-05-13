@@ -738,7 +738,6 @@ export default function LandingPage() {
                   </div>
                   <div className="bg-gray-50 p-3 md:p-4 rounded-lg">
                     <h3 className="font-medium text-[#2a7d8c] mb-1 md:mb-2 text-sm md:text-base">공유 상담 세션</h3>
-                    <p className="text-xs md:text-  mb-1 md:mb-2 text-sm md:text-base">공유 상담 세션</h3>
                     <p className="text-xs md:text-sm text-gray-600">
                       연간 8회의 가족 공유 상담 세션을 제공합니다. 가족 구성원이 함께 참여할 수 있습니다.
                     </p>
